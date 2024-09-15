@@ -1,0 +1,27 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+void generate_binary_string(int size,vector<int> arr , int i )
+{
+    if (i == size)  //base case
+    {
+        for(int j = 0 ; j < arr.size() ; j++) cout << arr[j];
+        cout << endl;
+        return;  // necessary to return to previous node
+    }
+    
+    else {
+        arr[i] = 0;
+        generate_binary_string(size , arr, i +1);   // return to previous node
+        
+        arr[i] = 1;
+        generate_binary_string(size , arr, i +1);  // return to 2 previous nodes
+    }
+}
+int main()
+{
+    int size = 2;
+    vector<int> arr(size); // creates a vector of size 2 with all elements = '0'
+    generate_binary_string(size ,arr, 0);  // first call 
+}
